@@ -7,7 +7,7 @@ const getCookieOptions = (rememberMe = false) => {
 
   return {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure:true,
     sameSite: "none",
     maxAge,
     path: "/",
@@ -31,11 +31,12 @@ export const sendAuthCookie = (res, token, rememberMe = false) => {
 export const clearAuthCookie = (res) => {
   res.clearCookie(COOKIE_NAME, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure:true,
     sameSite: "none",
     path: "/",
   });
 };
+
 
 export const getTokenFromRequest = (req) => {
   const cookieToken = req.cookies?.[COOKIE_NAME];
