@@ -8,7 +8,7 @@ const getCookieOptions = (rememberMe = false) => {
   return {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: "none",
     maxAge,
     path: "/",
   };
@@ -32,7 +32,7 @@ export const clearAuthCookie = (res) => {
   res.clearCookie(COOKIE_NAME, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: "none",
     path: "/",
   });
 };
